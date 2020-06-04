@@ -1,0 +1,7 @@
+.logo {
+    -webkit-transition: all 0.3s ease-in-out;
+}  
+
+.logo:hover {
+    transform: scale(1.15);
+}
