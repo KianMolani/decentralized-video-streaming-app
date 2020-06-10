@@ -1,0 +1,7 @@
+.navigation-bar-2 {
+    display: flex;
+    justify-content: flex-end;
+    padding-top: 20px;
+    padding-right: 10px;
+}
+

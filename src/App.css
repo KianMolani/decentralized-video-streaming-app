@@ -14,10 +14,10 @@
 }
 
 .navigation-bar {
-    display: flex;
-    justify-content: space-between;
-    flex-direction: row;
-    padding-top: 20px;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  padding-top: 20px;
 }
 
 .particles {
@@ -28,56 +28,3 @@
   left: 0;
   z-index: -1;
   }
-
-.section-title {
-  max-width: 800px;
-  margin: 80px auto;
-  text-align: center;
-}
-
-.section-title h1 {
-  font-size: 24px;
-  text-transform: uppercase;
-  color: #000000;
-}
-
-.section-title .divider {
-  position: relative;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
-  margin-bottom: 30px;
-  margin-top: 30px;
-}
-
-.section-title .divider:before {
-  position: absolute;
-  content: '';
-  width: 30px;
-  height: 30px;
-  border: 1px solid rgba(0, 0, 0, 0.2);
-  left: 50%;
-  margin-left: -15px;
-  top: 50%;
-  background: #fff;
-  margin-top: -15px;
-  -webkit-transform: rotate(45deg);
-  -moz-transform: rotate(45deg);
-  -ms-transform: rotate(45deg);
-  transform: rotate(45deg);
-}
-
-.section-title .divider:after {
-  position: absolute;
-  content: '';
-  width: 20px;
-  height: 20px;
-  border: 1px solid #E14242;
-  left: 50%;
-  margin-left: -10px;
-  top: 50%;
-  background: #E14242;
-  margin-top: -10px;
-  -webkit-transform: rotate(45deg);
-  -moz-transform: rotate(45deg);
-  -ms-transform: rotate(45deg);
-  transform: rotate(45deg);
-}
