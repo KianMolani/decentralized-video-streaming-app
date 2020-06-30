@@ -10,7 +10,7 @@ import SearchBar from './components/SearchBar/SearchBar';
 import Divider from './components/Divider/Divider';
 import Video from './components/Video/Video';
 import Upload from './components/Upload/Upload';
-import luthor from './thumbnails/Luthoriac.png'
+import luthor from './thumbnails/Luthoriac.png'; // DELETE THIS!
 
 const particlesOptions = {
   particles: {
@@ -65,7 +65,7 @@ class App extends Component {
                 <Divider />
                 <Video imglink='https://mk0spaceflightnoa02a.kinstacdn.com/wp-content/uploads/2020/03/32652060737_a3056b6f30_k.jpg' title='SpaceX Falcon Heavy Test Flight'/> 
                 <Video imglink='https://i.ytimg.com/vi/UGAVxSriToM/hq720.jpg?sqp=-oaymwEZCNAFEJQDSFXyq4qpAwsIARUAAIhCGAFwAQ==&rs=AOn4CLBpOi1DLJwUP5qIgY7NCUGWr8rAmQ' title='Space Echo ¦ XXVI ¦ Synthwave Mix' /> 
-                                <Video imglink='https://i.ytimg.com/vi/PM7ArMxUFR0/maxresdefault.jpg' title="No Man's Sky NEXT Gameplay"/>
+                <Video imglink='https://i.ytimg.com/vi/PM7ArMxUFR0/maxresdefault.jpg' title="No Man's Sky NEXT Gameplay"/>
                 <Video imglink={luthor} title='Lex Luthor and Brainiac Join Together'/> 
                 <Video imglink='https://i.ytimg.com/vi/P99qJGrPNLs/maxresdefault.jpg' title='Cyberpunk 2077 Trailer'/> 
                 <Video imglink='https://cms.elitedangerous.com/frontier_image_styles/style?url=/sites/default/files/2018-11/horizons-key-art_0.jpg&width=1920&height=1080&type=binary' title='Elite Dangerous | Announcement Trailer'/> 

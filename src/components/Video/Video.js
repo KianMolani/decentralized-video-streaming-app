@@ -13,6 +13,6 @@ const Video = (props) => {
 	);
 }
 
-//Should load all videos better (limit size ... see elite dangerous), together
+//Should load all videos better (limit size ... see elite dangerous), together ... problems with local ... consider gifs
 
 export default Video;
