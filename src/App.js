@@ -12,6 +12,51 @@ import Video from './components/Video/Video';
 import Upload from './components/Upload/Upload';
 import luthor from './thumbnails/Luthoriac.png'; // DELETE THIS!
 
+// const ipfsClient = require('ipfs-http-client');
+// const ipfs = ipfsClient({ host: 'ipfs.infura.io', port: '5001', protocol: 'https' });
+
+// var data = luthor;
+
+// (async function() {
+//   for await (const file of ipfs.add(data)) {
+//     const str = "https://ipfs.infura.io/ipfs/";
+//     console.log(str.concat(file.path))
+//   }
+// })();
+
+const Web3 = require('web3');
+
+const web3 = new Web3(new Web3.providers.HttpProvider('https://ropsten.infura.io/v3/7b973cc4e4f04c9081ead788d635c300'));
+
+const contractAddress = '0xD4400dbFb74B49E734e6Fd63FFDE30B36bAdEF08';
+const abi = [{"inputs":[{"internalType":"string","name":"_title","type":"string"},{"internalType":"string","name":"_thumbnailHash","type":"string"}],"name":"addVideo","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"getArrayLength","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"_id","type":"uint256"}],"name":"getVideo","outputs":[{"internalType":"string","name":"","type":"string"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"string","name":"_thumbnailHash","type":"string"}],"name":"isExisting","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"","type":"uint256"}],"name":"videoArray","outputs":[{"internalType":"uint256","name":"id","type":"uint256"},{"internalType":"uint256","name":"date","type":"uint256"},{"internalType":"string","name":"title","type":"string"},{"internalType":"string","name":"thumbnailHash","type":"string"}],"stateMutability":"view","type":"function"}];
+const contract = new web3.eth.Contract(abi, contractAddress);
+
+async function rpc(func) {
+    while (true) {
+        try {
+            return await func.call();
+        }
+        catch (error) {
+            if (!error.message.startsWith("Invalid JSON RPC response"))
+                throw error;
+        }
+    }
+}
+
+async function run() {
+    var result = await rpc(contract.methods.getArrayLength());
+    var length = result;
+    var i;
+    for (i = 0; i < length; i++) {
+      result = await rpc(contract.methods.getVideo(i));
+      result = result.split("/");
+      console.log(result[1]);
+    }
+}
+
+run();
+
 const particlesOptions = {
   particles: {
     number: {
@@ -42,12 +87,36 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      route: 'signin'
+      route: 'home'
     }
   }
 
   onRouteChange = (route) => {
     this.setState({route: route});
+  }
+componentDidMount() {
+  this.createVideos();
+}
+
+createVideos = async () => {
+    let videos = []
+    var videoTitles;
+    var thumbnailHash;
+    var length = await rpc(contract.methods.getArrayLength());
+    var result;
+    var stringex;
+    for (var i = 0; i < length; i++) {
+      result = await rpc(contract.methods.getVideo(i));
+      result = result.split("/");
+      videoTitles = result[0];
+      thumbnailHash = result[1];
+      stringex = "https://ipfs.io/ipfs/"
+      stringex = stringex.concat(thumbnailHash);
+      videos.push(<Video onRouteChange={this.onRouteChange} imglink={stringex} title={videoTitles}/> );
+    }
+    this.setState({
+      Videos: videos
+    })
   }
 
   render() {
@@ -63,12 +132,7 @@ class App extends Component {
                   <Navigation onRouteChange={this.onRouteChange} />
                 </div>
                 <Divider />
-                <Video imglink='https://mk0spaceflightnoa02a.kinstacdn.com/wp-content/uploads/2020/03/32652060737_a3056b6f30_k.jpg' title='SpaceX Falcon Heavy Test Flight'/> 
-                <Video imglink='https://i.ytimg.com/vi/UGAVxSriToM/hq720.jpg?sqp=-oaymwEZCNAFEJQDSFXyq4qpAwsIARUAAIhCGAFwAQ==&rs=AOn4CLBpOi1DLJwUP5qIgY7NCUGWr8rAmQ' title='Space Echo ¦ XXVI ¦ Synthwave Mix' /> 
-                <Video imglink='https://i.ytimg.com/vi/PM7ArMxUFR0/maxresdefault.jpg' title="No Man's Sky NEXT Gameplay"/>
-                <Video imglink={luthor} title='Lex Luthor and Brainiac Join Together'/> 
-                <Video imglink='https://i.ytimg.com/vi/P99qJGrPNLs/maxresdefault.jpg' title='Cyberpunk 2077 Trailer'/> 
-                <Video imglink='https://cms.elitedangerous.com/frontier_image_styles/style?url=/sites/default/files/2018-11/horizons-key-art_0.jpg&width=1920&height=1080&type=binary' title='Elite Dangerous | Announcement Trailer'/> 
+                {this.state.Videos}
               </div>
             : <Upload onRouteChange={this.onRouteChange} /> )
           : ( this.state.route === 'signin'
