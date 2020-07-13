@@ -10,6 +10,7 @@ import SearchBar from './components/SearchBar/SearchBar';
 import Divider from './components/Divider/Divider';
 import Video from './components/Video/Video';
 import Upload from './components/Upload/Upload';
+import View from './components/View/View';
 import luthor from './thumbnails/Luthoriac.png'; // DELETE THIS!
 
 // const ipfsClient = require('ipfs-http-client');
@@ -134,7 +135,9 @@ createVideos = async () => {
                 <Divider />
                 {this.state.Videos}
               </div>
-            : <Upload onRouteChange={this.onRouteChange} /> )
+            : ( this.state.route === 'view'
+              ? <View onRouteChange={this.onRouteChange}/>
+              : <Upload onRouteChange={this.onRouteChange} /> ))
           : ( this.state.route === 'signin'
             ? <SignIn onRouteChange={this.onRouteChange}/>
             : <Register onRouteChange={this.onRouteChange}/> )

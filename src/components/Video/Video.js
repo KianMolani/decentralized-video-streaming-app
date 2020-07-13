@@ -13,7 +13,7 @@ class Video extends React.Component {
     render() {
     	const { onRouteChange } = this.props;
     	return (
-    	<div onClick={() => onRouteChange('signin')} className="bg-light-gray dib br3 pa3 ma5 grow bw2 shadow-5 container4">
+    	<div onClick={() => onRouteChange('view')} className="bg-light-gray dib br3 pa3 ma5 grow bw2 shadow-5 container4">
     		<img altsrc='thumbnail' src={this.state.imglink} className='container3'/>
     		<div>
     			<h2 style={{fontFamily:"Roboto Mono", paddingTop: 15, fontSize: "16px"}}>{this.state.title}</h2>
