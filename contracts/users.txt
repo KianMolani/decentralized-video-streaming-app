@@ -11,7 +11,7 @@ contract users {
     
     user [] public userArray;
     
-    uint iteration = 0; // change to clean swipe contract
+    uint iteration = 3; // change to clean swipe contract
     
     function addUser(string memory _channelName, string memory _email, string memory _password) public returns(bool) {
         bool exists = isExisting(_channelName, _email);

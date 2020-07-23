@@ -1,0 +1,51 @@
+pragma solidity ^0.6.6;
+
+contract playlist {
+
+    struct video {
+        uint id;
+        uint date;
+        string title;
+        string thumbnailHash; // use bytes32 instead
+        string videoHash; // use bytes32 instead
+    }
+    
+    video [] public videoArray;
+    
+    uint iteration = 3; // change to clean swipe contract
+    
+    function addVideo(string memory _title, string memory _thumbnailHash, string memory _videoHash) public returns(bool) {
+        if (isExisting(_thumbnailHash, _videoHash) == false) {
+            uint _id = videoArray.length;
+            uint _date = now;
+            videoArray.push(video({
+                id: _id,
+                date: _date,
+                title: _title,
+                thumbnailHash: _thumbnailHash,
+                videoHash: _videoHash
+            }));
+            return true;
+        } else {
+            return false;
+        }
+    }
+    
+    function isExisting(string memory _thumbnailHash, string memory _videoHash) public view returns(bool) {
+        for (uint i=0; i<videoArray.length; i++) {
+            if (keccak256(abi.encodePacked(videoArray[i].thumbnailHash)) == keccak256(abi.encodePacked(_thumbnailHash)) || keccak256(abi.encodePacked(videoArray[i].videoHash)) == keccak256(abi.encodePacked(_videoHash))) {
+                return true;
+            }
+        }
+        return false;
+    }
+    
+    function getVideo(uint _id) public view returns(string memory) {
+        return string(abi.encodePacked(videoArray[_id].title, "/", videoArray[_id].thumbnailHash, "/", videoArray[_id].videoHash));
+    }
+
+    
+    function getArrayLength() public view returns(uint) {
+        return videoArray.length;
+    }
+}
