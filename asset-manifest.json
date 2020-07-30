@@ -1,0 +1,28 @@
+{
+  "files": {
+    "main.css": "/decentralized-video-streaming-app/static/css/main.9006c98d.chunk.css",
+    "main.js": "/decentralized-video-streaming-app/static/js/main.74a7f6f6.chunk.js",
+    "main.js.map": "/decentralized-video-streaming-app/static/js/main.74a7f6f6.chunk.js.map",
+    "runtime-main.js": "/decentralized-video-streaming-app/static/js/runtime-main.9e784ec3.js",
+    "runtime-main.js.map": "/decentralized-video-streaming-app/static/js/runtime-main.9e784ec3.js.map",
+    "static/css/2.9e56c109.chunk.css": "/decentralized-video-streaming-app/static/css/2.9e56c109.chunk.css",
+    "static/js/2.ea0a76c8.chunk.js": "/decentralized-video-streaming-app/static/js/2.ea0a76c8.chunk.js",
+    "static/js/2.ea0a76c8.chunk.js.map": "/decentralized-video-streaming-app/static/js/2.ea0a76c8.chunk.js.map",
+    "index.html": "/decentralized-video-streaming-app/index.html",
+    "precache-manifest.f36611a75e585b587b5bf5574808b51a.js": "/decentralized-video-streaming-app/precache-manifest.f36611a75e585b587b5bf5574808b51a.js",
+    "service-worker.js": "/decentralized-video-streaming-app/service-worker.js",
+    "static/css/2.9e56c109.chunk.css.map": "/decentralized-video-streaming-app/static/css/2.9e56c109.chunk.css.map",
+    "static/css/main.9006c98d.chunk.css.map": "/decentralized-video-streaming-app/static/css/main.9006c98d.chunk.css.map",
+    "static/js/2.ea0a76c8.chunk.js.LICENSE.txt": "/decentralized-video-streaming-app/static/js/2.ea0a76c8.chunk.js.LICENSE.txt",
+    "static/media/mdb.css": "/decentralized-video-streaming-app/static/media/arrow_right.8ef6a08c.svg",
+    "static/media/all.min.css": "/decentralized-video-streaming-app/static/media/fa-solid-900.ec763292.svg",
+    "static/media/logo.svg": "/decentralized-video-streaming-app/static/media/logo.2b470564.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.9e784ec3.js",
+    "static/css/2.9e56c109.chunk.css",
+    "static/js/2.ea0a76c8.chunk.js",
+    "static/css/main.9006c98d.chunk.css",
+    "static/js/main.74a7f6f6.chunk.js"
+  ]
+}
